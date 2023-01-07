@@ -15,14 +15,12 @@ func birthdayCakeCandles(candles []int32) int32 {
 	maxHeightCandles := 0
 
 	for i := 0; i < len(candles); i++ {
-
 		if candles[i] > int32(maxHeightCandles) {
 			maxHeightCandles = int(candles[i])
 		}
 	}
 
 	for i := 0; i < len(candles); i++ {
-
 		if candles[i] == int32(maxHeightCandles) {
 			countCandles++
 		}
