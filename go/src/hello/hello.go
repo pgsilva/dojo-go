@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 )
 
@@ -14,16 +15,16 @@ func main() {
 
 	switch command {
 	case 1:
-		fmt.Println("monitoring ...")
+		monitor()
 	case 2:
 		fmt.Println("logs ...")
 	case 0:
 		fmt.Println("going out ...")
+		os.Exit(0)
 	default:
 		fmt.Println("ERROR - command invalid!")
+		os.Exit(-1)
 	}
-
-	os.Exit(0)
 }
 
 func intro() {
@@ -53,4 +54,18 @@ func readCommand() int {
 
 	return command
 
+}
+
+func monitor() {
+	fmt.Println("monitoring ...")
+
+	site := "https://www.alura.com.br"
+
+	resp, _ := http.Get(site)
+
+	if resp.StatusCode == 200 {
+		fmt.Println("site:", site, "loaded successfully!")
+	} else {
+		fmt.Println("an error occurred when access:", site, "statuscode:", resp.StatusCode)
+	}
 }
