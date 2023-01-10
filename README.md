@@ -1,2 +1,2 @@
 # dojo-go
-kubernetes martial arts training
+go lang martial arts training
